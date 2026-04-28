@@ -6,8 +6,9 @@ $XA = "0";
 $XB = "0";
 $XC = "0";
 $XD = "0";
-$XE = "0";      
+$XE = "0";
 ?>
+
 <body>
     <style>
         input[type="radio"] {
@@ -158,7 +159,7 @@ $XE = "0";
             -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
             filter: brightness(1.2) grayscale(.5) opacity(.9);
         }
-        
+
         #slideMenu.closed {
             right: -400px;
         }
@@ -391,24 +392,22 @@ AND j.XKodeSoal = c.XKodeSoal ) where c.XKodeSoal = '$xkodesoal' and j.XUserJawa
 
     //script to add elements using javascript
     var elem = document.createElement('div');
-        elem.className = "item";
-        elem.innerHTML = "Inserted using javascript";
-        container.appendChild(elem);
-        var elements = [elem];
-        //appended method does the re-layout after new element is inserted into the container.
-        msnry.appended(elements);
-        
-        //script to remove elements using javascript
-        function remove_item()
-        {
-            msnry.remove(elements);
-        }
-        
-        //event trigger when item is removed usin js
-        msnry.on('removeComplete', function(msnryInstance, removedItems) {
-          alert('Removed ' + removedItems.length + ' items');
-        });
-		
+    elem.className = "item";
+    elem.innerHTML = "Inserted using javascript";
+    container.appendChild(elem);
+    var elements = [elem];
+    //appended method does the re-layout after new element is inserted into the container.
+    msnry.appended(elements);
+
+    //script to remove elements using javascript
+    function remove_item() {
+        msnry.remove(elements);
+    }
+
+    //event trigger when item is removed usin js
+    msnry.on('removeComplete', function(msnryInstance, removedItems) {
+        alert('Removed ' + removedItems.length + ' items');
+    });
 </script>
 
 </div>
@@ -1046,73 +1045,74 @@ if ($result) {
                 <div class="col-xs-4">
                     <?php
                     if (isset($prev_id)) {
-                    if ($prev_id == '') {
-                        //echo '<a href="#" data-id="'.$prev_id.'" class="get_pic">'; 
+                        if ($prev_id == '') {
+                            //echo '<a href="#" data-id="'.$prev_id.'" class="get_pic">'; 
                     ?>
-                        <!--  <button id="btnPrevSoal" class="btn btn-default btn-prev" data-bind="">SOAL SEBELUMNYA1</button>!-->
-                        <?php //echo "</a>"; 
-                        ?>
-                    <?php } else {
-                        echo '<a href="#" data-id="' . $prev_id . '" class="get_pic">'; ?>
-                        <button id="btnPrevSoal" class="btn btn-default btn-prev" data-bind="click: gotoBack">SOAL SEBELUMNYA</button>
-                    <?php //echo "</a>[$prev_id]";					
-                    } ?>
+                            <!--  <button id="btnPrevSoal" class="btn btn-default btn-prev" data-bind="">SOAL SEBELUMNYA1</button>!-->
+                            <?php //echo "</a>"; 
+                            ?>
+                        <?php } else {
+                            echo '<a href="#" data-id="' . $prev_id . '" class="get_pic">'; ?>
+                            <button id="btnPrevSoal" class="btn btn-default btn-prev" data-bind="click: gotoBack">SOAL SEBELUMNYA</button>
+                        <?php //echo "</a>[$prev_id]";					
+                        } ?>
                 </div>
 
-                <?php
-                isset($prev_id) ? $stu = $prev_id + 1 : $stu = '0';
-                //$stu = $prev_id + 1;
+            <?php
+                        isset($prev_id) ? $stu = $prev_id + 1 : $stu = '0';
+                        //$stu = $prev_id + 1;
                     }
-                //include "config/cbt_con_i.php";
-                // $cek = mysqli_query("select * from cbt_jawaban where XNomerSoal='$stu' and XKodeSoal ='$xkodesoal'"); 
-                $cek = mysqli_query($sqlconn_i, "select * from cbt_jawaban where Urut='$stu' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'");
-                $var_ragu = mysqli_fetch_array($cek);
-                $r = $var_ragu['XRagu'];
-                if ($r == '1') {
-                    $ragu = 'checked';
-                } else {
-                    $ragu = '';
-                }
-                $nilaiA = $var_ragu['XA'];
-                $nilaiB = $var_ragu['XB'];
-                $nilaiC = $var_ragu['XC'];
-                $nilaiD = $var_ragu['XD'];
-                $nilaiE = $var_ragu['XE'];
-                ?>
-
-                <div class="col-xs-4 text-center">
-                    <div id="content">
-                        <label class="labele"><input type="checkbox" id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)" <?php echo $ragu; ?> />
-                            &nbsp;&nbsp;&nbsp;RAGU-RAGU</label>
-
-
-
-
-                    </div>
-                </div>
-                <div class="col-xs-4 text-right">
-                    <script>
-
-
-                    </script>
-                    <?php
-                    if ($next_id == '') {
-                        echo '<a href="#" >'; ?>
-
-                        <?php $cekragu = mysqli_num_rows(mysqli_query($sqlconn_i, "select * from cbt_jawaban where XRagu ='1' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'"));
-                        if ($cekragu > 0) { ?>
-                            <button id="btnSelesai" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModalR">TES SELESAI</button>
-                        <?php } else { ?>
-                            <button id="btnSelesai" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModal2">TES SELESAI</button>
-                        <?php } //echo "|$next_id|";
-                        echo "</a>";
+                    //include "config/cbt_con_i.php";
+                    // $cek = mysqli_query("select * from cbt_jawaban where XNomerSoal='$stu' and XKodeSoal ='$xkodesoal'"); 
+                    $cek = mysqli_query($sqlconn_i, "select * from cbt_jawaban where Urut='$stu' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'");
+                    $var_ragu = mysqli_fetch_array($cek);
+                    $r = $var_ragu['XRagu'];
+                    if ($r == '1') {
+                        $ragu = 'checked';
                     } else {
+                        $ragu = '';
+                    }
+                    $nilaiA = $var_ragu['XA'];
+                    $nilaiB = $var_ragu['XB'];
+                    $nilaiC = $var_ragu['XC'];
+                    $nilaiD = $var_ragu['XD'];
+                    $nilaiE = $var_ragu['XE'];
+            ?>
 
-                        echo '<a href="#" data-id="' . $next_id . '" class="get_pic">'; ?>
-                        <button id="btnNextSoal" class="btn btn-primary btn-next activebutton" data-bind="css: { &#39;activebutton&#39;:(currentNo() &lt; totalQuestions - 1)}, visible: (currentNo() &lt; totalQuestions - 1),click: gotoNext">SOAL BERIKUTNYA</button><?php // echo "|$next_id|"; 
+            <div class="col-xs-4 text-center">
+                <div id="content">
+                    <label class="labele"><input type="checkbox" id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)" <?php echo $ragu; ?> />
+                        &nbsp;&nbsp;&nbsp;RAGU-RAGU</label>
 
-                                                                                                                                                                                                                                                                    } ?>
+
+
+
                 </div>
+            </div>
+            <div class="col-xs-4 text-right">
+                <script>
+
+
+                </script>
+                <?php
+                if ($next_id == '') {
+                    echo '<a href="#" >'; ?>
+
+                    <?php $cekragu = mysqli_num_rows(mysqli_query($sqlconn_i, "select * from cbt_jawaban where XRagu ='1' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'"));
+                    if ($cekragu > 0) { ?>
+                        <button id="btnSelesai" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModalR">TES SELESAI</button>
+                    <?php } else { ?>
+                        <button id="btnSelesai" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModal2">TES SELESAI</button>
+                    <?php } //echo "|$next_id|";
+                    echo "</a>";
+                } else {
+
+                    echo '<a href="#" data-id="' . $next_id . '" class="get_pic">'; ?>
+                    <button id="btnNextSoal" class="btn btn-primary btn-next activebutton" data-bind="css: { &#39;activebutton&#39;:(currentNo() &lt; totalQuestions - 1)}, visible: (currentNo() &lt; totalQuestions - 1),click: gotoNext">SOAL BERIKUTNYA</button>
+                    <?php //echo "|$next_id|"; 
+
+} ?>
+            </div>
             </div>
         </section>
 

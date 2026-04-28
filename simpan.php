@@ -21,7 +21,7 @@ $user = $_COOKIE['PESERTA'];
   
  $cek = mysqli_num_rows(mysqli_query($sqlconn_i, "select * from cbt_jawaban where Urut='$_REQUEST[soale]' and XKodeSoal = '$xkodesoal' and XUserJawab = '$user'"));
  if($cek>0){
-// $sql = mysqli_query("update cbt_jawaban set XJawaban = '$_REQUEST[nama]' where XNomerSoal='$_REQUEST[soale]' and XKodeSoal = '$xkodesoal' and XUserJawab = '$user'");
+ $sql = mysqli_query($sqlconn_i, "update cbt_jawaban set XJawaban = '$_REQUEST[nama]' where XNomerSoal='$_REQUEST[soale]' and XKodeSoal = '$xkodesoal' and XUserJawab = '$user'");
 $tgl = date("Y-m-d");
 $jam = date("H:i:s");
 

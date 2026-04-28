@@ -736,7 +736,7 @@ include "modal.php"; ?>
         isset($_COOKIE['cook']) ? $cook = $_COOKIE['cook'] : $cook = '1';
         ?>
         <li class="header">
-            <div class="main"><span class="flex-putih">SOAL NO <?php echo $cook; ?></span>
+            <div class="main"><span class="flex-putih">SOAL NO <?php //echo $cook; ?></span>
                 <!-- asli            <span class="flex-item" style="background-color:<?php echo $cssb; ?>"  id="soal"></span> !-->
                 <span class="flex-item" style="background-color:<?php echo $cssb; ?>" id="soal">
                 </span>
